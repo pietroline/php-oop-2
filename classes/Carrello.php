@@ -1,8 +1,8 @@
 <?php
 
     class Carrello{
-        public $utente;
-        public $prodotti=[];
+        private $utente;
+        private $prodotti=[];
 
         public function setUtente($utente){
             $this->utente = $utente;       

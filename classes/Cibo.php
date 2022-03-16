@@ -9,7 +9,7 @@
 
         public function setPeso($peso){
             if(is_numeric($peso) && $peso > 0.1){
-                $this->peso = $peso . " Kg";
+                $this->peso = $peso;
                 return true;
             }else{
                 return false;
