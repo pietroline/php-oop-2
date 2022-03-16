@@ -20,11 +20,14 @@
     require_once __DIR__ . "/classes/Prodotto.php";
     require_once __DIR__ . "/classes/Cibo.php";
     require_once __DIR__ . "/classes/Gioco.php";
+    require_once __DIR__ . "/classes/Antiparassitario.php";
     require_once __DIR__ . "/classes/Carrello.php";
     require_once __DIR__ . "/classes/CartaDiCredito.php";
     
 
     require_once __DIR__ . "/prodotti.php";
+
+    
 
     foreach($prodotti as $key => $prodotto){
 
@@ -36,6 +39,8 @@
             ${"prodotto" .($key+1)} = new Cibo($prodotto["nome"]);
         }else if($prodotto["classe"] == "Gioco"){
             ${"prodotto" .($key+1)} = new Gioco($prodotto["nome"]);
+        }else if($prodotto["classe"] == "Antiparassitario"){
+            ${"prodotto" .($key+1)} = new Antiparassitario($prodotto["nome"]);
         }
 
         echo "<h2>Prodotto ". ($key+1) . "</h2>";
@@ -86,6 +91,13 @@
                 echo "<b>Categoria: </b>"  . ${"prodotto" .($key+1)}->getCategoria() . "<br>"; 
             }else{
                 echo "Errore!! Categoria non valida" . "<br>";
+            }
+        }else if($prodotto["classe"] == "Antiparassitario"){
+            //controllo e set sulla tipologia
+            if(${"prodotto" .($key+1)}->settipologia($prodotto["tipologia"])){
+                echo "<b>Tipologia: </b>"  . ${"prodotto" .($key+1)}->getTipologia() . "<br>"; 
+            }else{
+                echo "Errore!! Tipologia non valida" . "<br>";
             }
         }
 
@@ -503,7 +515,9 @@
             echo "<b>Formato: </b>"  . $carrello->getProdotti()[$key]->getFormato() . "<br>"; 
             echo "<b>Peso: </b>"  . $carrello->getProdotti()[$key]->getPeso() ." Kg" . "<br>"; 
         }else if($carrello->getProdotti()[$key]->getClasse() == "Gioco"){
-            echo "<b>Alimentazione: </b>"  . $carrello->getProdotti()[$key]->getCategoria() . "<br>"; 
+            echo "<b>Categoria: </b>"  . $carrello->getProdotti()[$key]->getCategoria() . "<br>"; 
+        }else if($carrello->getProdotti()[$key]->getClasse() == "Gioco"){
+            echo "<b>Antiparassitario: </b>"  . $carrello->getProdotti()[$key]->getCategoria() . "<br>"; 
         }
 
         echo "<b>Brand: </b>" . $carrello->getProdotti()[$key]->getBrand(). "<br>";   
