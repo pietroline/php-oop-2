@@ -16,9 +16,11 @@
 
 <?php
 
+    require_once __DIR__ . "/classes/User.php";
     require_once __DIR__ . "/classes/Prodotto.php";
     require_once __DIR__ . "/classes/Cibo.php";
     require_once __DIR__ . "/classes/Gioco.php";
+
     
     $prodotti = [
         [
@@ -69,6 +71,46 @@
         ]
 
     ];
+
+    $nomeUtente = "Mario";
+    $CognomeUtente = "Rossi";
+    $CheckUtenteRegistrato = false;
+
+    $user = new User($CheckUtenteRegistrato, $CognomeUtente, $nomeUtente);
+    
+    // controllo sul nome
+    if($user->setNome($nomeUtente)){
+        echo "Nome: " . $user->getNome() . "<br>";
+    }else{
+        echo "Errore!! Nome non valido" . "<br>";
+    }
+
+    // controllo sul cognnome
+    if($user->setNome($CognomeUtente)){
+        echo "Cognome: " . $user->getCognome() . "<br>";
+    }else{
+        echo "Errore!! Cognome non valido" . "<br>";
+    }
+
+    // controllo sul cognnome
+    if($user->setRegistrato($CheckUtenteRegistrato)){
+        if($user->getRegistrato()){
+            echo "<b>Utente registrato</b>";
+        }else{
+            echo "<b>Utente NON registrato</b>";
+        }
+    }else{
+        echo "Errore!! Login non valido" . "<br>";
+    }
+
+    echo "<br><br><hr><br><br>";
+
+
+
+    // ---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
     foreach($prodotti as $key => $prodotto){
 
