@@ -1,13 +1,12 @@
 <?php
-
     class User{
         private $nome;
         private $cognome;
-        private $registrato; //true / false
+        protected $registrato; //true / false
 
         public function __construct($registrato, $cognome, $nome=null){
-            $this->setCognome($cognome);
             $this->setRegistrato($registrato);
+            $this->setCognome($cognome);
             $this->setNome($nome);
         }
 
