@@ -20,81 +20,355 @@
     require_once __DIR__ . "/classes/Prodotto.php";
     require_once __DIR__ . "/classes/Cibo.php";
     require_once __DIR__ . "/classes/Gioco.php";
-
+    require_once __DIR__ . "/classes/Carrello.php";
+    require_once __DIR__ . "/classes/CartaDiCredito.php";
     
-    $prodotti = [
-        [
-            "nome" => "Virtus Dog Adult Rustic",
-            "brand" => "Virtus",
-            "classe" => "Cibo",
-            "alimentazione" => "Cibo secco",
-            "formato" => "busta",
-            "peso" => 11.2,
-            "prezzo" => 21.90,
-            "quantita" => 5
-        ],
-        [
-            "nome" => "Peluche Marvel Disney Spiderman",
-            "brand" => "Disney",
-            "classe" => "Gioco",
-            "categoria" => "Peluche",
-            "prezzo" => 16,95,
-            "quantita" => 2
-        ],
-        [
-            "nome" => "Trixie Palla Tennis Cane",
-            "brand" => "Trixie",
-            "classe" => "Gioco",
-            "categoria" => "Palla",
-            "prezzo" => 1,56,
-            "quantita" => 18
-        ],
-        [
-            "nome" => "Next Dog Adult Coniglio Piselli 400g",
-            "brand" => "Next",
-            "classe" => "Cibo",
-            "alimentazione" => "Cibo umido",
-            "formato" => "lattina",
-            "peso" => 0.40,
-            "prezzo" => 1.69,
-            "quantita" => 15
-        ],
-        [
-            "nome" => "Edgard & Cooper Snack Doggy Dental Mela Eucalipto",
-            "brand" => "EDGARD & COOPER",
-            "classe" => "Cibo",
-            "alimentazione" => "Snack dentale",
-            "formato" => "busta",
-            "peso" => 0.240,
-            "prezzo" => 4,75,
-            "quantita" => 7
-        ]
 
-    ];
+    require_once __DIR__ . "/prodotti.php";
+
+   
+    
+    // ---------------------------------------------------------------------------------------------------------------------------------------
+
+    // Prodotto 1
+        echo "<h2>Prodotto 1<br></h2>";
+        $prodotto1 = new Cibo($prodotti[0]["nome"]);
+
+        // controllo e set sul nome
+        if($prodotto1->setNome($prodotti[0]["nome"])){
+            echo "<b>Nome: </b>" . $prodotto1->getNome() . "<br>";
+        }else{
+            echo "Errore!! Nome non valido" . "<br>";
+        }
+
+        // controllo e set sulla classe
+        if($prodotto1->setClasse($prodotti[0]["classe"])){
+            echo "<b>Classe: </b>"  . $prodotto1->getClasse() . "<br>"; 
+        }else{
+            echo "Errore!! Classe non valida" . "<br>";
+        }
+
+        // controllo e set sull'alimentazione
+        if($prodotto1->setAlimentazione($prodotti[0]["alimentazione"])){
+            echo "<b>Alimentazione: </b>"  . $prodotto1->getAlimentazione() . "<br>"; 
+        }else{
+            echo "Errore!! Alimentazione non valida" . "<br>";
+        }
+
+        // controllo e set sul formato
+        if($prodotto1->setFormato($prodotti[0]["formato"])){
+            echo "<b>Formato: </b>"  . $prodotto1->getFormato() . "<br>"; 
+        }else{
+            echo "Errore!! Formato non valido" . "<br>";
+        }
+
+        // controllo e set sul peso
+        if($prodotto1->setPeso($prodotti[0]["peso"])){
+            echo "<b>Peso: </b>"  . $prodotto1->getPeso() . "<br>"; 
+        }else{
+            echo "Errore!! Peso non valido" . "<br>";
+        }
+
+        // controllo e set sul brand
+        if($prodotto1->setBrand($prodotti[0]["brand"])){
+            echo "<b>Brand: </b>" . $prodotto1->getBrand() . "<br>";   
+        }else{
+            echo "Errore!! Brand non valido" . "<br>";
+        }
+
+        // controllo e set sul prezzo
+        if($prodotto1->setPrezzo($prodotti[0]["prezzo"])){
+            echo "<b>Prezzo: </b>"  . $prodotto1->getPrezzo() . " &euro;<br>";  
+        }else{
+            echo "Errore!! Prezzo non valido" . "<br>";
+        }
+
+        // controllo e set sulla quantità disponibile
+        if($prodotto1->setQuantitaDisponibile($prodotti[0]["quantita"])){
+            echo "<b>Quantità disponibile: </b>"  . $prodotto1->getQuantitaDisponibile() . " pz. <br>";
+        }else{
+            echo "Errore!! Quantità non valido" . "<br>";
+        }
+
+        echo "<br><br><hr><br><br>";
+
+
+
+
+
+    // Prodotto 2
+        echo "<h2>Prodotto 2<br></h2>";
+        $prodotto2 = new Gioco($prodotti[1]["nome"]);
+
+        // controllo e set sul nome
+        if($prodotto2->setNome($prodotti[1]["nome"])){
+            echo "<b>Nome: </b>" . $prodotto2->getNome() . "<br>";
+        }else{
+            echo "Errore!! Nome non valido" . "<br>";
+        }
+
+        // controllo e set sulla classe
+        if($prodotto2->setClasse($prodotti[1]["classe"])){
+            echo "<b>Classe: </b>"  . $prodotto2->getClasse() . "<br>"; 
+        }else{
+            echo "Errore!! Classe non valida" . "<br>";
+        }
+
+        // controllo sulla categoria
+        if($prodotto2->setCategoria($prodotti[1]["categoria"])){
+            echo "<b>Categoria: </b>"  . $prodotto2->getCategoria() . "<br>"; 
+        }else{
+            echo "Errore!! Categoria non valida" . "<br>";
+        }
+
+        // controllo e set sul brand
+        if($prodotto2->setBrand($prodotti[1]["brand"])){
+            echo "<b>Brand: </b>" . $prodotto2->getBrand() . "<br>";   
+        }else{
+            echo "Errore!! Brand non valido" . "<br>";
+        }
+
+        // controllo e set sul prezzo
+        if($prodotto2->setPrezzo($prodotti[1]["prezzo"])){
+            echo "<b>Prezzo: </b>"  . $prodotto2->getPrezzo(). " &euro;<br>";
+        }else{
+            echo "Errore!! Prezzo non valido" . "<br>";
+        }
+
+        // controllo e set sulla quantità disponibile
+        if($prodotto2->setQuantitaDisponibile($prodotti[1]["quantita"])){
+            echo "<b>Quantità disponibile: </b>"  . $prodotto2->getQuantitaDisponibile() . " pz. <br>";
+        }else{
+            echo "Errore!! Quantità non valido" . "<br>";
+        }
+
+        echo "<br><br><hr><br><br>";
+
+
+
+
+
+
+
+    // Prodotto 3
+        echo "<h2>Prodotto 3<br></h2>";
+        $prodotto3 = new Gioco($prodotti[2]["nome"]);
+
+        // controllo e set sul nome
+        if($prodotto3->setNome($prodotti[2]["nome"])){
+            echo "<b>Nome: </b>" . $prodotto3->getNome() . "<br>";
+        }else{
+            echo "Errore!! Nome non valido" . "<br>";
+        }
+
+        // controllo e set sulla classe
+        if($prodotto3->setClasse($prodotti[2]["classe"])){
+            echo "<b>Classe: </b>"  . $prodotto3->getClasse() . "<br>"; 
+        }else{
+            echo "Errore!! Classe non valida" . "<br>";
+        }
+
+        // controllo sulla categoria
+         if($prodotto3->setCategoria($prodotti[2]["categoria"])){
+            echo "<b>Categoria: </b>"  . $prodotto3->getCategoria() . "<br>"; 
+        }else{
+            echo "Errore!! Categoria non valida" . "<br>";
+        }
+
+        // controllo e set sul brand
+        if($prodotto3->setBrand($prodotti[2]["brand"])){
+            echo "<b>Brand: </b>" . $prodotto3->getBrand() . "<br>";   
+        }else{
+            echo "Errore!! Brand non valido" . "<br>";
+        }
+
+        // controllo e set sul prezzo
+        if($prodotto3->setPrezzo($prodotti[2]["prezzo"])){
+            echo "<b>Prezzo: </b>"  . $prodotto3->getPrezzo() . " &euro;<br>";
+        }else{
+            echo "Errore!! Prezzo non valido" . "<br>";
+        }
+
+        // controllo e set sulla quantità disponibile
+        if($prodotto3->setQuantitaDisponibile($prodotti[2]["quantita"])){
+            echo "<b>Quantità disponibile: </b>"  . $prodotto3->getQuantitaDisponibile() . " pz. <br>";
+        }else{
+            echo "Errore!! Quantità non valido" . "<br>";
+        }
+
+        echo "<br><br><hr><br><br>";
+
+
+
+
+
+
+
+
+    // Prodotto 4
+        echo "<h2>Prodotto 4<br></h2>";
+        $prodotto4 = new Cibo($prodotti[3]["nome"]);
+
+        // controllo e set sul nome
+        if($prodotto4->setNome($prodotti[3]["nome"])){
+            echo "<b>Nome: </b>" . $prodotto4->getNome() . "<br>";
+        }else{
+            echo "Errore!! Nome non valido" . "<br>";
+        }
+
+        // controllo e set sulla classe
+        if($prodotto4->setClasse($prodotti[3]["classe"])){
+            echo "<b>Classe: </b>"  . $prodotto4->getClasse() . "<br>"; 
+        }else{
+            echo "Errore!! Classe non valida" . "<br>";
+        }
+
+        // controllo e set sull'alimentazione
+        if($prodotto4->setAlimentazione($prodotti[3]["alimentazione"])){
+            echo "<b>Alimentazione: </b>"  . $prodotto4->getAlimentazione() . "<br>"; 
+        }else{
+            echo "Errore!! Alimentazione non valida" . "<br>";
+        }
+
+        // controllo e set sul formato
+        if($prodotto4->setFormato($prodotti[3]["formato"])){
+            echo "<b>Formato: </b>"  . $prodotto4->getFormato() . "<br>"; 
+        }else{
+            echo "Errore!! Formato non valido" . "<br>";
+        }
+
+        // controllo e set sul peso
+        if($prodotto4->setPeso($prodotti[3]["peso"])){
+            echo "<b>Peso: </b>"  . $prodotto4->getPeso() . "<br>"; 
+        }else{
+            echo "Errore!! Peso non valido" . "<br>";
+        }
+
+        // controllo e set sul brand
+        if($prodotto4->setBrand($prodotti[3]["brand"])){
+            echo "<b>Brand: </b>" . $prodotto4->getBrand() . "<br>";   
+        }else{
+            echo "Errore!! Brand non valido" . "<br>";
+        }
+
+        // controllo e set sul prezzo
+        if($prodotto4->setPrezzo($prodotti[3]["prezzo"])){
+            echo "<b>Prezzo: </b>"  . $prodotto4->getPrezzo() . " &euro;<br>";  
+        }else{
+            echo "Errore!! Prezzo non valido" . "<br>";
+        }
+
+        // controllo e set sulla quantità disponibile
+        if($prodotto4->setQuantitaDisponibile($prodotti[3]["quantita"])){
+            echo "<b>Quantità disponibile: </b>"  . $prodotto4->getQuantitaDisponibile() . " pz. <br>";
+        }else{
+            echo "Errore!! Quantità non valido" . "<br>";
+        }
+
+        echo "<br><br><hr><br><br>";
+
+
+
+
+
+
+
+
+    // Prodotto 5
+        echo "<h2>Prodotto 5<br></h2>";
+        $prodotto5 = new Cibo($prodotti[4]["nome"]);
+
+        // controllo e set sul nome
+        if($prodotto5->setNome($prodotti[4]["nome"])){
+            echo "<b>Nome: </b>" . $prodotto5->getNome() . "<br>";
+        }else{
+            echo "Errore!! Nome non valido" . "<br>";
+        }
+
+        // controllo e set sulla classe
+        if($prodotto5->setClasse($prodotti[4]["classe"])){
+            echo "<b>Classe: </b>"  . $prodotto5->getClasse() . "<br>"; 
+        }else{
+            echo "Errore!! Classe non valida" . "<br>";
+        }
+
+        // controllo e set sull'alimentazione
+        if($prodotto5->setAlimentazione($prodotti[4]["alimentazione"])){
+            echo "<b>Alimentazione: </b>"  . $prodotto5->getAlimentazione() . "<br>"; 
+        }else{
+            echo "Errore!! Alimentazione non valida" . "<br>";
+        }
+
+        // controllo e set sul formato
+        if($prodotto5->setFormato($prodotti[4]["formato"])){
+            echo "<b>Formato: </b>"  . $prodotto5->getFormato() . "<br>"; 
+        }else{
+            echo "Errore!! Formato non valido" . "<br>";
+        }
+
+        // controllo e set sul peso
+        if($prodotto5->setPeso($prodotti[4]["peso"])){
+            echo "<b>Peso: </b>"  . $prodotto5->getPeso() . "<br>"; 
+        }else{
+            echo "Errore!! Peso non valido" . "<br>";
+        }
+
+        // controllo e set sul brand
+        if($prodotto5->setBrand($prodotti[4]["brand"])){
+            echo "<b>Brand: </b>" . $prodotto5->getBrand() . "<br>";   
+        }else{
+            echo "Errore!! Brand non valido" . "<br>";
+        }
+
+        // controllo e set sul prezzo
+        if($prodotto5->setPrezzo($prodotti[4]["prezzo"])){
+            echo "<b>Prezzo: </b>"  . $prodotto5->getPrezzo() . " &euro;<br>";
+        }else{
+            echo "Errore!! Prezzo non valido" . "<br>";
+        }
+
+        // controllo e set sulla quantità disponibile
+        if($prodotto5->setQuantitaDisponibile($prodotti[4]["quantita"])){
+            echo "<b>Quantità disponibile: </b>"  . $prodotto5->getQuantitaDisponibile() . " pz. <br>";
+        }else{
+            echo "Errore!! Quantità non valido" . "<br>";
+        }
+
+        echo "<br><br><hr><br><br>";
+
+ 
+    
+
+    // ---------------------------------------------------------------------------------------------------------------------------------------
+
+
+    echo "<br><br><hr><hr><br><br>";
+
+    echo "<h1>Carrello dell'utente:</h1>";
 
     $nomeUtente = "Mario";
-    $CognomeUtente = "Rossi";
-    $CheckUtenteRegistrato = false;
+    $cognomeUtente = "Rossi";
+    $checkUtenteRegistrato = true;
 
-    $user = new User($CheckUtenteRegistrato, $CognomeUtente, $nomeUtente);
-    
+    $user1 = new User($checkUtenteRegistrato, $cognomeUtente, $nomeUtente);
+
     // controllo sul nome
-    if($user->setNome($nomeUtente)){
-        echo "Nome: " . $user->getNome() . "<br>";
+    if($user1->setNome($nomeUtente)){
+        echo "Nome: " . $user1->getNome() . "<br>";
     }else{
         echo "Errore!! Nome non valido" . "<br>";
     }
 
-    // controllo sul cognnome
-    if($user->setNome($CognomeUtente)){
-        echo "Cognome: " . $user->getCognome() . "<br>";
+    // controllo sul cognome
+    if($user1->setCognome($cognomeUtente)){
+        echo "Cognome: " . $user1->getCognome() . "<br>";
     }else{
         echo "Errore!! Cognome non valido" . "<br>";
     }
 
-    // controllo sul cognnome
-    if($user->setRegistrato($CheckUtenteRegistrato)){
-        if($user->getRegistrato()){
+    // controllo sul registrato
+    if($user1->setRegistrato($checkUtenteRegistrato)){
+        if($user1->getRegistrato()){
             echo "<b>Utente registrato</b>";
         }else{
             echo "<b>Utente NON registrato</b>";
@@ -103,121 +377,87 @@
         echo "Errore!! Login non valido" . "<br>";
     }
 
+
+    echo "<br><br><hr><br><br>";
+
+
+    $carrello = new Carrello();
+    $carrello->setUtente($user1);
+    $prodottiCarrello = [$prodotto1, $prodotto2];
+
+    if($user1->getRegistrato()){
+        foreach($prodottiCarrello as $prodotto){
+            $prezzo = $prodotto->getPrezzo();
+            $prodotto->setPrezzo($prezzo*0.8); //20% di sconto
+            $carrello->setProdotti($prodotto);
+        }
+    }else{
+
+        foreach($prodottiCarrello as $prodotto){
+            $carrello->setProdotti($prodotto);
+        }
+         
+    }
+
+    
+                   
+   
+    echo "<h2>Prodotto 1<br></h2>";
+    echo "<b>Nome: </b>" . $carrello->prodotti[0]->getNome() . "<br>";
+    echo "<b>Classe: </b>"  . $carrello->prodotti[0]->getClasse() . "<br>"; 
+
+    if($carrello->prodotti[0]->getClasse() == "Cibo"){
+        echo "<b>Alimentazione: </b>"  . $carrello->prodotti[0]->getAlimentazione() . "<br>"; 
+        echo "<b>Formato: </b>"  . $carrello->prodotti[0]->getFormato() . "<br>"; 
+        echo "<b>Peso: </b>"  . $carrello->prodotti[0]->getPeso() . "<br>"; 
+    }else if($carrello->prodotti[0]->getClasse() == "Gioco"){
+        echo "<b>Alimentazione: </b>"  . $carrello->prodotti[0]->getCategoria() . "<br>"; 
+    }
+    
+    echo "<b>Brand: </b>" . $carrello->prodotti[0]->getBrand(). "<br>";   
+    echo "<b>Prezzo: </b>"  . $carrello->prodotti[0]->getPrezzo() . " &euro;<br>";
+    echo "<b>Quantità disponibile: </b>"  . $carrello->prodotti[0]->getQuantitaDisponibile(). " pz. <br>";
+
+
+
+
+
     echo "<br><br><hr><br><br>";
 
 
 
-    // ---------------------------------------------------------------------------------------------------------------------------------------
 
+    echo "<h2>Prodotto 2<br></h2>";
+    echo "<b>Nome: </b>" . $carrello->prodotti[1]->getNome() . "<br>";
+    echo "<b>Classe: </b>"  . $carrello->prodotti[1]->getClasse() . "<br>"; 
 
-
-
-    foreach($prodotti as $key => $prodotto){
-
-        echo "<h2>Prodotto ". ($key+1) ."<br></h2>";
-        
-        //istanzio oggetto in maniera opportuna basandomi sulla classe del prodotto
-        if($prodotto["classe"] == "Cibo"){
-            $flag_prodotto = new Cibo($prodotto["nome"]);
-        }else if($prodotto["classe"] == "Gioco"){
-            $flag_prodotto = new Gioco($prodotto["nome"]);
-        }
-
-        
- 
-
-
-        // controllo sul nome
-        if($flag_prodotto->setNome($prodotto["nome"])){
-            echo "<b>Nome: </b>" . $flag_prodotto->getNome() . "<br>";
-        }else{
-            echo "Errore!! Nome non valido" . "<br>";
-        }
-
-        // controllo sulla classe
-        if($flag_prodotto->setClasse($prodotto["classe"])){
-            echo "<b>Classe: </b>"  . $flag_prodotto->getClasse() . "<br>"; 
-        }else{
-            echo "Errore!! Classe non valida" . "<br>";
-        }
-
-
-
-
-
-        
-
-        //condizioni valide solo per l'istanza dell'oggetto Cibo
-        if($prodotto["classe"] == "Cibo"){
-            // controllo sull'alimentazione
-            if($flag_prodotto->setAlimentazione($prodotto["alimentazione"])){
-                echo "<b>Alimentazione: </b>"  . $flag_prodotto->getAlimentazione() . "<br>"; 
-            }else{
-                echo "Errore!! Alimentazione non valida" . "<br>";
-            }
-
-            // controllo sul formato
-            if($flag_prodotto->setFormato($prodotto["formato"])){
-                echo "<b>Formato: </b>"  . $flag_prodotto->getFormato() . "<br>"; 
-            }else{
-                echo "Errore!! Formato non valido" . "<br>";
-            }
-
-            // controllo sul peso
-            if($flag_prodotto->setPeso($prodotto["peso"])){
-                echo "<b>Peso: </b>"  . $flag_prodotto->getPeso() . "<br>"; 
-            }else{
-                echo "Errore!! Peso non valido" . "<br>";
-            }
-        }
-
-
-        //condizioni valide solo per l'istanza dell'oggetto Giochi
-        if($prodotto["classe"] == "Gioco"){
-            // controllo sulla categoria
-            if($flag_prodotto->setCategoria($prodotto["categoria"])){
-                echo "<b>Categoria: </b>"  . $flag_prodotto->getCategoria() . "<br>"; 
-            }else{
-                echo "Errore!! Categoria non valida" . "<br>";
-            }
-        }
-
-
-        
-
-
-
-
-        
-        
-        // controllo sul brand
-        if($flag_prodotto->setBrand($prodotto["brand"])){
-            echo "<b>Brand: </b>" . $flag_prodotto->getBrand() . "<br>";   
-        }else{
-            echo "Errore!! Brand non valido" . "<br>";
-        }
-
-        // controllo sul prezzo
-        if($flag_prodotto->setPrezzo($prodotto["prezzo"])){
-            echo "<b>Prezzo: </b>"  . $flag_prodotto->getPrezzo() . "<br>";  
-        }else{
-            echo "Errore!! Prezzo non valido" . "<br>";
-        }
-
-        // controllo sulla quantità disponibile
-        if($flag_prodotto->setQuantitaDisponibile($prodotto["quantita"])){
-            echo "<b>Quantità disponibile: </b>"  . $flag_prodotto->getQuantitaDisponibile() ."<br>";
-        }else{
-            echo "Errore!! Quantità non valido" . "<br>";
-        }
-
-       
-
-        echo "<br><br><hr><br><br>";
+     if($carrello->prodotti[1]->getClasse() == "Cibo"){
+        echo "<b>Alimentazione: </b>"  . $carrello->prodotti[1]->getAlimentazione() . "<br>"; 
+        echo "<b>Formato: </b>"  . $carrello->prodotti[1]->getFormato() . "<br>"; 
+        echo "<b>Peso: </b>"  . $carrello->prodotti[1]->getPeso() . "<br>"; 
+    }else if($carrello->prodotti[1]->getClasse() == "Gioco"){
+        echo "<b>Alimentazione: </b>"  . $carrello->prodotti[1]->getCategoria() . "<br>"; 
     }
 
-
+    echo "<b>Brand: </b>" . $carrello->prodotti[1]->getBrand(). "<br>";
+    echo "<b>Prezzo: </b>" .$carrello->prodotti[1]->getPrezzo() . " &euro;<br>";
+    echo "<b>Quantità disponibile: </b>"  . $carrello->prodotti[1]->getQuantitaDisponibile(). " pz. <br>";
    
-    
+    echo "<br><br><hr><hr><br><br>";
 
-    
+
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
+
+    $cartaDiCredito = new CartaDiCredito("6/12/2030"); //data nel formato mm dd yyyy
+    $cartaDiCredito->setUtente($user1);
+
+    echo "Carta di credito di " . $cartaDiCredito->getUtente()->getCognome() . " " . $cartaDiCredito->getUtente()->getNome();
+    if($cartaDiCredito->getCheckScadenza()){
+        echo "<h3>Pagamento confermato! </h3> <br>";
+    }else{
+        echo "<h3>Pagamento rifiutato! Carta scaduta! </h3> <br>"; 
+    }
+
+    echo "<br><br><hr><hr><br><br>";

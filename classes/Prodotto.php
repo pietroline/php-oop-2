@@ -1,7 +1,5 @@
 <?php
-
-    require_once __DIR__ . "/User.php";
-    class Prodotto extends User{
+    class Prodotto{
         private $nome; //ad esempio: crocchette, snack, cuccia, cappotto
         private $classe; // alimentazione, accessori, giochi, abbigliamento
         private $brand; // Virtus, Next, Disney, Croci
@@ -53,13 +51,7 @@
 
         public function setPrezzo($prezzo){
             if(is_numeric($prezzo) && $prezzo > 0.01){
-                
-                if($this->getRegistrato()){
-                    $this->prezzo = 0 . " &euro;";
-                }else{
-                    $this->prezzo = $prezzo . " &euro;";
-                }
-                
+                $this->prezzo = $prezzo;
                 return true;
             }else{
                 return false;
@@ -72,7 +64,7 @@
 
         public function setQuantitaDisponibile($quantitàDisponibile){
             if(is_numeric($quantitàDisponibile) && $quantitàDisponibile > 1){
-                $this->quantitàDisponibile = $quantitàDisponibile . " pz.";
+                $this->quantitàDisponibile = $quantitàDisponibile;
                 return true;
             }else{
                 return false;
