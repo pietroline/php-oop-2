@@ -453,17 +453,21 @@
     $checkUtenteRegistrato = true;
 
     $user = new User($checkUtenteRegistrato, $cognomeUtente, $nomeUtente);
+    $carrello = new Carrello();
+    $carrello->setNome($user->getNome());
+    $carrello->setCognome($user->getCognome());
+    $prodottiCarrello = [$prodotto1, $prodotto2];
 
     // controllo e set sul nome
     if($user->setNome($nomeUtente)){
-        echo "Nome: " . $user->getNome() . "<br>";
+        echo "Nome: " . $carrello->getNome() . "<br>";
     }else{
         echo "Errore!! Nome non valido" . "<br>";
     }
 
     // controllo e set sul cognome
     if($user->setCognome($cognomeUtente)){
-        echo "Cognome: " . $user->getCognome() . "<br>";
+        echo "Cognome: " . $carrello->getCognome() . "<br>";
     }else{
         echo "Errore!! Cognome non valido" . "<br>";
     }
@@ -483,9 +487,6 @@
     echo "<br><br><hr><br><br>";
 
 
-    $carrello = new Carrello();
-    $carrello->setUtente($user);
-    $prodottiCarrello = [$prodotto1, $prodotto2];
 
     if($user->getRegistrato()){
         //utente registrato => 20% di sconto su tutti i prodotti
@@ -578,15 +579,17 @@
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 
-    $cartaDiCredito = new CartaDiCredito("6/12/2030"); //data nel formato mm dd yyyy
-    $cartaDiCredito->setUtente($user);
+    $cartaDiCredito = new CartaDiCredito("6/12/2020"); //data nel formato mm dd yyyy
+    $cartaDiCredito->setNome($user->getNome());
+    $cartaDiCredito->setCognome($user->getCognome());
 
     if($cartaDiCredito->getCheckScadenza()){
         echo "<h3>Pagamento confermato! </h3> <br>";
     }else{
         echo "<h3>Pagamento rifiutato! Carta scaduta! </h3> <br>"; 
     }
+
     
-    echo "Carta di credito di " . $cartaDiCredito->getUtente()->getCognome() . " " . $cartaDiCredito->getUtente()->getNome();
+    echo "Carta di credito di " . $cartaDiCredito->getCognome() . " " . $cartaDiCredito->getNome();
 
     echo "<br><br><hr><hr><br><br>";

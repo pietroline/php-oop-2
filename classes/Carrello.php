@@ -1,16 +1,11 @@
 <?php
 
+    require_once __DIR__ . "/../traits/DatiUtente.php";
     class Carrello{
-        protected $utente;
+        
+        use DatiUtente;
+       
         protected $prodotti=[];
-
-        public function setUtente($utente){
-            $this->utente = $utente;       
-        }
-
-        public function getUtente(){
-            return $this->utente;
-        }
 
         public function setProdotti($prodotto){
             $this->prodotti[] = $prodotto;       

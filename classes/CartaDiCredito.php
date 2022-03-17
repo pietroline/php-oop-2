@@ -1,7 +1,10 @@
 <?php
 
+    require_once __DIR__ . "/../traits/DatiUtente.php";
+
     class CartaDiCredito{
-        private $utente;
+        use DatiUtente;
+
         private $checkScadenza;
 
         public function __construct($dataScadenza){   
@@ -26,11 +29,4 @@
             return $this->checkScadenza;
         }
 
-        public function setUtente($user){
-            $this->utente = $user;
-        }
-
-        public function getUtente(){
-            return $this->utente;
-        }
     }
