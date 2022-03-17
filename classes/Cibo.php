@@ -3,9 +3,9 @@
     require_once __DIR__ . "/Prodotto.php";
 
     class Cibo extends Prodotto{
-        private $peso;
-        private $formato;
-        private $alimentazione;
+        protected $peso;
+        protected $formato;
+        protected $alimentazione;
 
         public function setPeso($peso){
             if(is_numeric($peso) && $peso > 0.1){

@@ -3,7 +3,7 @@
     require_once __DIR__ . "/Prodotto.php";
 
     class Antiparassitario extends Prodotto{
-        private $tipologia;
+        protected $tipologia;
 
         public function setTipologia($tipologia){
             if(is_string($tipologia)){

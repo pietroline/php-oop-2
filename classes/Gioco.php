@@ -3,7 +3,7 @@
     require_once __DIR__ . "/Prodotto.php";
 
     class Gioco extends Prodotto{
-        private $categoria;
+        protected $categoria;
         
 
         public function setCategoria($categoria){

@@ -1,10 +1,10 @@
 <?php
     class Prodotto{
         private $nome; //ad esempio: crocchette, snack, cuccia, cappotto
-        private $classe; // alimentazione, accessori, giochi, abbigliamento
-        private $brand; // Virtus, Next, Disney, Croci
-        private $prezzo;
-        private $quantitàDisponibile;
+        protected $classe; // alimentazione, accessori, giochi, abbigliamento
+        protected $brand; // Virtus, Next, Disney, Croci
+        protected $prezzo;
+        protected $quantitàDisponibile;
 
         public function __construct($nome){
             $this->setNome($nome);
