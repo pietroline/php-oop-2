@@ -74,4 +74,14 @@
         public function getQuantitaDisponibile(){
             return $this->quantitàDisponibile;
         }
+
+        public function setSconto($prezzo, $sconto, $key){
+            if($sconto < 0){
+                throw new Exception("Percentuale sconto negativa! Prodotto ". ($key+1) . " non scontatao");
+            }else{
+                $prezzoScontato = $prezzo - ($prezzo*$sconto/100);
+                $this->setPrezzo($prezzoScontato);
+            }
+            
+        }
     }

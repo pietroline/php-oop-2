@@ -490,9 +490,13 @@
 
     if($user->getRegistrato()){
         //utente registrato => 20% di sconto su tutti i prodotti
-        foreach($prodottiCarrello as $prodotto){
+        foreach($prodottiCarrello as $key => $prodotto){
             $prezzo = $prodotto->getPrezzo();
-            $prodotto->setPrezzo($prezzo*0.8); 
+            try{
+                $prodotto->setSconto($prezzo, -20, $key);
+            }catch(Exception $e){
+                echo "Eccezione: " . $e->getMessage() . "<br>";
+            }
             $carrello->setProdotti($prodotto);
         }
     }else{
